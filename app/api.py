@@ -10,20 +10,20 @@ MAX_INPUT_LENGTH = 12
 async def generate_snippet_api(prompt: str):
     validate_input_length(prompt)
     snippet = generate_branding_snippet(prompt)
-    return {"snippet": snippet, "message": []}
+    return {"snippet": snippet, "keywords": []}
 
 @app.get("/generate_keywords")
 async def generate_keywords_api(prompt: str):
     validate_input_length(prompt)
     keywords = generate_keywords(prompt)
-    return {"snippet": None, "message": keywords}
+    return {"snippet": None, "keywords": keywords}
 
 @app.get("/generate_snippet_keywords")
 async def generate_snippet_keywords_api(prompt: str):
     validate_input_length(prompt)
     snippet = generate_branding_snippet(prompt)
     keywords = generate_keywords(prompt)
-    return {"snippet": snippet, "message": keywords}
+    return {"snippet": snippet, "keywords": keywords}
 
 def validate_input_length(prompt: str):
     if len(prompt) >= MAX_INPUT_LENGTH:

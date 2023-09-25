@@ -1,3 +1,4 @@
+import os
 import openai
 import argparse
 import re
@@ -23,7 +24,7 @@ def validate_length(prompt: str) -> bool:
 
 def generate_branding_snippet(prompt: str) -> str:
     # Load your API key from an environment variable or secret management service
-    openai.api_key = "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"
+    openai.api_key = os.getenv("OPENAI_API_KEY")
     enriched_prompt = f"Generate upbeat branding snippet for {prompt}: "
     print(enriched_prompt)
     response = openai.Completion.create(engine="davinci-instruct-beta-v3", prompt=enriched_prompt, max_tokens=32)
@@ -44,7 +45,7 @@ def generate_branding_snippet(prompt: str) -> str:
 
 def generate_keywords(prompt: str) -> List[str]:
     # Load your API key from an environment variable or secret management service
-    openai.api_key = "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"
+    openai.api_key = os.getenv("OPENAI_API_KEY")
     enriched_prompt = f"Generate related branding keywords for {prompt}: "
     print(enriched_prompt)
     response = openai.Completion.create(engine="davinci-instruct-beta-v3", prompt=enriched_prompt, max_tokens=32)
