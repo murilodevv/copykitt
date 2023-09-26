@@ -3,6 +3,8 @@
 import React from "react";
 import Form from "./form";
 import Results from "./results";
+import Image from "next/image";
+import logo from "../public/copykittLogo.svg"
 
 const CopyKitt: React.FC = () => {
     const CHARACTER_LIMIT: number = 32;
@@ -44,10 +46,24 @@ const CopyKitt: React.FC = () => {
         );
     };
 
+    const gradientTextStyle =
+    "text-white text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500 font-light w-fit";
+
     return ( 
         <>
-            <h1>CopyKitt</h1>
-            {displayedElement}
+        <div className="flex justify-center items-center h-screen p-4">
+            <div className="w-auto mx-auto">
+                <div className="max-w-md mx-auto">
+                    <div className="bg-slate-800 p-6 rounded-md text-white">
+                        <div className="flex justify-center items-center p-3">
+                            <Image src={logo} alt={"CopyKitt Logo"} width={70} height={70}></Image>
+                            <h1 className={gradientTextStyle + " text-2xl text-white font-light"}>CopyKitt</h1>
+                        </div>
+                        {displayedElement}
+                    </div>
+                </div>
+            </div>
+        </div>
         </>
     );
 };
